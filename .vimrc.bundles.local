@@ -1,0 +1,14 @@
+"Bundle 'chazy/cscope_maps'
+Bundle 'vimcn/vimcdoc'
+Bundle 'vimcn/NERD_tree.vim.cnx'
+Bundle 'vimcn/NERD_commenter.cnx'
+Bundle 'vimcn/ctrlp.cnx'
+Bundle 'vimcn/tagbar.cnx'
+
+Bundle 'mattn/emmet-vim'
+
+"scheme "
+"Bundle 'slimv.vim'
+"Bundle 'thoughtbot/vim-rspec'
+"Bundle 'sjl/tslime.vim'
+

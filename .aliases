@@ -1,0 +1,32 @@
+#this is levi alias 
+#vim: filetype=zsh:
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# some more ls aliases
+alias ls='ls -F --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+
+
+alias psg='ps -ef | grep'
+alias vi=vim
+
+# code c
+alias mkcs='find . -name "*.[hc]" -o \
+               -name "*.cpp" -o \
+               -name "*.cc"  \
+               > cscope.files && cscope -bq -i cscope.files; ctags -R'
+#alias cdpdrop="cd /media/levi/data/Dropbox/"
+
+# cygwin
+if [ `uname -o` = "Cygwin" ];then
+    alias ifconfig=ipconfig
+    chcp 65001 1>/dev/null
+fi

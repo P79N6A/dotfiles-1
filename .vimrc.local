@@ -1,0 +1,121 @@
+" vim: set filetype=vim:
+"view
+set t_Co=256
+colorscheme molokai
+let g:molokai_original = 1
+"set background=dark
+set t_vb=
+if &term =~ '256color'
+    set t_ut=
+endif
+" for tmux
+"if exists('$TMUX')
+      "set term=screen-256color
+  "endif
+
+set wrap
+"set cmdheight=2
+"set laststatus=2
+"set linebreak
+set nospell
+autocmd FileType c,cpp,python set cc=81|hi colorcolumn guibg=black
+
+"font
+"set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,gbk,gb2312,latin1
+"set helplang=cn
+
+"file
+"set nobackup
+"set nowritebackup
+"set noswapfile
+"set autoread
+
+"hotkey
+"nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
+
+"cscope config help
+if has("cscope") && !has("gui_running")
+    set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-
+    set cscopetag
+    set cscopepathcomp=2
+    set nocsverb
+if filereadable("cscope.out")
+    cs add cscope.out
+endif
+set csverb
+endif
+" cscope hotkey
+nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+nmap <C-@><C-@>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@><C-@>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@><C-@>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@><C-@>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@><C-@>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@><C-@>f :vert scscopetag cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+
+"indentguide
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 0
+
+"airline  "config at .vimrc.before.local
+"let g:airline_theme='molokai'
+"let g:airline_powerline_fonts = 1
+"let g:airline_detect_whitespace          = 0 "关闭空白符检测
+"let g:airline#extensions#tabline#enabled = 1 "顶部tab栏显示
+"if !exists('g:airline_symbols')
+    "let g:airline_symbols = {}
+"endif
+
+"schenme lisp"
+""let g:slimv_swank_cmd = '! xterm -e clisp --load ~/.vim/bundle/slimv.vim/slime/start-swank.lisp &'
+autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
+"let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
+"let g:niji_dark_colours = [
+    "\ [ '81', '#5fd7ff'],
+    "\ [ '99', '#875fff'],
+    "\ [ '1',  '#dc322f'],
+    "\ [ '76', '#5fd700'],
+    "\ [ '3',  '#b58900'],
+    "\ [ '2',  '#859900'],
+    "\ [ '6',  '#2aa198'],
+    "\ [ '4',  '#268bd2'],
+    "\ ]¬
+
+" tslime {{{
+ let g:tslime_ensure_trailing_newlines = 1
+ let g:tslime_normal_mapping = '<localleader>t'
+ let g:tslime_visual_mapping = '<localleader>t'
+ let g:tslime_vars_mapping = '<localleader>T'
+" " }}}"
+" }}}"
+"
+"emmet
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
+
+"let g:user_emmet_leader_key='<C-y>'
+"
