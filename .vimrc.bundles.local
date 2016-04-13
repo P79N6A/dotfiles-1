@@ -13,3 +13,5 @@ Bundle 'vim-airline/vim-airline-themes'
 "Bundle 'thoughtbot/vim-rspec'
 "Bundle 'sjl/tslime.vim'
 
+" nvim
+Bundle 'Shougo/deoplete.nvim'

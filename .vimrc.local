@@ -17,6 +17,7 @@ set wrap
 "set cmdheight=2
 "set laststatus=2
 "set linebreak
+set visualbell
 set nospell
 autocmd FileType c,cpp,python set cc=81|hi colorcolumn guibg=black
 
@@ -119,3 +120,5 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 
 "let g:user_emmet_leader_key='<C-y>'
 "
+" deoplete
+let g:deoplete#enable_at_startup = 1
