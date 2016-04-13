@@ -14,4 +14,5 @@ Bundle 'vim-airline/vim-airline-themes'
 "Bundle 'sjl/tslime.vim'
 
 " nvim
-Bundle 'Shougo/deoplete.nvim'
+" Bundle 'Shougo/deoplete.nvim'
+" Bundle 'noahfrederick/vim-neovim-defaults'

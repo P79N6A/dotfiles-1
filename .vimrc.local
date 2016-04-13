@@ -122,3 +122,8 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 "
 " deoplete
 let g:deoplete#enable_at_startup = 1
+" neovim
+let g:python_host_prog = '/usr/local/opt/pyenv/shims/python'
+let g:loaded_python_provider = 1
+"let g:python_host_prog = '/usr/local/bin/python'
+"let g:python3_host_prog = '/usr/bin/env python3'
