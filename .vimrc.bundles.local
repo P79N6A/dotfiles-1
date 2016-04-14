@@ -7,7 +7,9 @@ Bundle 'vimcn/tagbar.cnx'
 
 Bundle 'mattn/emmet-vim'
 
+" for molokai
 Bundle 'vim-airline/vim-airline-themes'
+
 "scheme "
 "Bundle 'slimv.vim'
 "Bundle 'thoughtbot/vim-rspec'
