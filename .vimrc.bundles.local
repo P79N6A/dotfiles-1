@@ -5,10 +5,11 @@ Bundle 'vimcn/NERD_commenter.cnx'
 Bundle 'vimcn/ctrlp.cnx'
 Bundle 'vimcn/tagbar.cnx'
 
-Bundle 'mattn/emmet-vim'
+"Bundle 'mattn/emmet-vim'
+"Bundle 'emmet-vim'
 
 " for molokai
-Bundle 'vim-airline/vim-airline-themes'
+"Bundle 'vim-airline/vim-airline-themes'
 
 "scheme "
 "Bundle 'slimv.vim'
