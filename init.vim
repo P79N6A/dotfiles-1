@@ -58,17 +58,28 @@ endif
 
 " General {{{
 set visualbell
-syntax on                   " Syntax highlighting
-autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
+syntax on
 "set helplang=cn
-"
+
 " UI
+colorscheme molokai
 set nu
 "set wrap
 "set nospell
+set showmatch                   " Show matching brackets/parenthesis
 set ignorecase
-colorscheme molokai
-" code check
+set scrolloff=3
+set scrolljump=3
+"set foldenable                  " Auto fold code
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+
+" formatting
+set pastetoggle=<F12>
+set splitright
+set splitbelow
+set nojoinspaces
+autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 
 " key map
 let mapleader = ","
