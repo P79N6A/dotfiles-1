@@ -15,18 +15,24 @@ call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('honza/vim-snippets')
 "call dein#add('matthewsimo/angular-vim-snippets')
+"call dein#add('scrooloose/syntastic')
+call dein#add('zchee/deoplete-jedi')
+call dein#add('davidhalter/jedi-vim')
 
-" main config
+" project 
 call dein#add('scrooloose/nerdtree')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('majutsushi/tagbar')
 
 " color
 call dein#add('vim-airline/vim-airline')
-call dein#add('tpope/vim-surround')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('flazz/vim-colorschemes')
 call dein#add('powerline/fonts')
+call dein#add('easymotion/vim-easymotion')
+call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-repeat')
+
 
 " doc
 call dein#add('vimcn/vimcdoc')
@@ -51,9 +57,11 @@ endif
 
 
 " nvim Config
-"let g:python_host_prog = '/usr/bin/python'
-"let g:python3_host_prog = '/usr/bin/python3'
-"let g:python3_host_prog = '/usr/local/opt/pyenv/shims/python3'
+"let g:python_host_prog = '/Users/levi/.virtualenvs/neovim2/bin/python'
+"let g:python3_host_prog = '/Users/levi/.virtualenvs/neovim3/bin/python'
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+"
 " nvim config end ---------------------------------
 
 " General {{{
@@ -66,8 +74,10 @@ colorscheme molokai
 set nu
 "set wrap
 "set nospell
+let $LANG = 'en'
 set showmatch                   " Show matching brackets/parenthesis
 set ignorecase
+set smartcase
 set scrolloff=3
 set scrolljump=3
 "set foldenable                  " Auto fold code
@@ -83,6 +93,8 @@ autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 
 " key map
 let mapleader = ","
+nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 
 " config end --------------------------------- }}}
 
@@ -95,6 +107,7 @@ let mapleader = ","
 " plugin
 " deoplede {{{
 let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#jedi#show_docstring =1
 "}}}
 "
 " nerdtree
@@ -116,16 +129,16 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
 "imap <expr><TAB>
 " \ pumvisible() ? "\<C-n>" :
 " \ neosnippet#expandable_or_jumpable() ?
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+" tagbar
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
