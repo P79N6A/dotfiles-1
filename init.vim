@@ -98,7 +98,7 @@ let g:deoplete#enable_at_startup = 1
 "}}}
 "
 " nerdtree
-map <C-e> :TreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
