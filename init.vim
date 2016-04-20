@@ -30,6 +30,7 @@ call dein#add('tpope/vim-fugitive')
 "call dein#add('scrooloose/syntastic') " syntax checking for vim
 call dein#add('benekastah/neomake') " neovim syntastic
 call dein#add('airblade/vim-gitgutter') "show git diff
+call dein#add('Shougo/unite.vim')
 
 " snippet complete
 call dein#add('Shougo/deoplete.nvim')
@@ -124,14 +125,23 @@ map <F5> :w<CR>:!ipython "%"<CR>
 " plugin
 " deoplede {{{
 let g:deoplete#enable_at_startup = 1
-"let g:deoplete#sources#jedi#show_docstring =1
 "}}}
-"
+" deoplete-jedi
+let g:deoplete#sources#jedi#show_docstring =1
+
+" vim-jedi  disable completion
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "1"
+let g:jedi#smart_auto_mappings = 0
+
 " nerdtree
 map <C-e> :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
-
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
 let NERDTreeChDirMode=0
@@ -156,6 +166,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " tagbar
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
@@ -165,12 +176,27 @@ nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
 "neomake
 "let g:neomake_open_list = 0 " Disable cursor stealing.
+"let g:neomake_verbose = 2
 let g:neomake_python_enabled_makers = ['pep8', 'flake8']
-let g:neomake_python_pep8_maker = {
-  \ 'args': ['--max-line-length 99'],
-  \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-  \ }
-let g:neomake_python_flake8_maker = { 'args': ['--max-line-length=99'], }
+"let g:neomake_python_enabled_makers = ['pep8']
+"let g:neomake_python_pep8_maker = {
+  "\ 'args': ['--max-line-length 99'],
+  "\ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+  "\ }
+"let g:neomake_python_flake8_maker = { 'args': ['--max-line-length=99'], }
+nnoremap <Leader>m :Neomake<CR>
+let g:neomake_error_sign = {
+    \ 'text': 'E>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+let g:neomake_warning_sign = {
+    \ 'text': 'W>',
+    \ 'texthl': 'WarningMsg',
+    \ }
+let g:neomake_informational_sign = {
+    \ 'text': 'I>',
+    \ 'texthl': 'WarningMsg',
+    \ }
 "autocmd! BufWritePost,BufReadPost * Neomake
 
 " airline
