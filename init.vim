@@ -8,31 +8,39 @@ set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.config/nvim/dein'))
 call dein#add('Shougo/dein.vim')
 
-" Add or remove your plugins here:
-" code
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('honza/vim-snippets')
-"call dein#add('matthewsimo/angular-vim-snippets')
-"call dein#add('scrooloose/syntastic')
-call dein#add('zchee/deoplete-jedi')
-call dein#add('davidhalter/jedi-vim')
-
-" project 
+" general
 call dein#add('scrooloose/nerdtree')
-call dein#add('scrooloose/nerdcommenter')
 call dein#add('majutsushi/tagbar')
-
+call dein#add('easymotion/vim-easymotion')
+call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-repeat')
+call dein#add('luochen1990/rainbow')
 " color
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('flazz/vim-colorschemes')
 call dein#add('powerline/fonts')
-call dein#add('easymotion/vim-easymotion')
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-repeat')
 
+
+" programming
+"call dein#add('scrooloose/syntastic')
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('tpope/vim-commentary')
+call dein#add('tpope/vim-fugitive')
+"call dein#add('scrooloose/syntastic') " syntax checking for vim
+call dein#add('benekastah/neomake') " neovim syntastic
+call dein#add('airblade/vim-gitgutter') "show git diff
+
+" snippet complete
+call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('honza/vim-snippets')
+"call dein#add('matthewsimo/angular-vim-snippets')
+
+" python
+call dein#add('zchee/deoplete-jedi')
+call dein#add('davidhalter/jedi-vim')
 
 " doc
 call dein#add('vimcn/vimcdoc')
@@ -59,8 +67,13 @@ endif
 " nvim Config
 "let g:python_host_prog = '/Users/levi/.virtualenvs/neovim2/bin/python'
 "let g:python3_host_prog = '/Users/levi/.virtualenvs/neovim3/bin/python'
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+if has("mac")
+    let g:python_host_prog = '/usr/local/bin/python'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+else
+    let g:python_host_prog = '/usr/bin/python'
+    let g:python3_host_prog = '/usr/bin/python3'
+endif
 "
 " nvim config end ---------------------------------
 
@@ -101,6 +114,10 @@ nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 " Code config {{{
 " C
 " python
+iab ipdb import ipdb; ipdb.set_trace()
+map <F5> :w<CR>:!ipython "%"<CR>
+
+
 " scheme lisp }}}
 "
 
@@ -142,3 +159,39 @@ endif
 
 " tagbar
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
+
+" rainbow
+"let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+"neomake
+"let g:neomake_open_list = 0 " Disable cursor stealing.
+let g:neomake_python_enabled_makers = ['pep8', 'flake8']
+let g:neomake_python_pep8_maker = {
+  \ 'args': ['--max-line-length 99'],
+  \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+  \ }
+let g:neomake_python_flake8_maker = { 'args': ['--max-line-length=99'], }
+"autocmd! BufWritePost,BufReadPost * Neomake
+
+" airline
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_powerline_fonts')
+    " Use the default set of separators with a few customizations
+    let g:airline_left_sep='›'  " Slightly fancier than '>'
+    let g:airline_right_sep='‹' " Slightly fancier than '<'
+endif
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+"gitgitter
+"let g:gitgutter_sign_column_always=0         " disable gutter" when gitgutter disabled
+"let g:gitgutter_enabled=1                    " enable at start
+"let g:gitgutter_max_signs=1000               " max signs
+"let g:gitgutter_sign_added="\u271a"          " heavy greek cross
+"let g:gitgutter_sign_modified="\u279c"       " heavy rounded-tip rightwards arrow
+"let g:gitgutter_sign_removed="\u2718"        " heavy ballot X
+"let g:gitgutter_sign_modified_removed="►"    " medium right facing triangle
+"let g:gitgutter_signs=1                      " enable signs by default
+"let g:gitgutter_highlight_lines=0            " enable line highlights
+" gitgutter will use Sign Column to set its color, reload it
