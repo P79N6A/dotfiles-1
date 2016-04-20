@@ -50,7 +50,6 @@ call dein#add('vimcn/NERD_commenter.cnx')
 call dein#add('vimcn/ctrlp.cnx')
 call dein#add('vimcn/tagbar.cnx')
 
-" You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 call dein#end()
@@ -82,10 +81,8 @@ endif
 set visualbell
 syntax on
 "set helplang=cn
-
-" UI
 colorscheme molokai
-set nu
+set number
 "set wrap
 "set nospell
 let $LANG = 'en'
@@ -110,22 +107,21 @@ let mapleader = ","
 nmap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 
-" config end --------------------------------- }}}
-
-" Code config {{{
+" programing {{{
 " C
+"
 " python
 iab ipdb import ipdb; ipdb.set_trace()
 map <F5> :w<CR>:!ipython "%"<CR>
+" scheme lisp
+
+" programing end }}}
 
 
-" scheme lisp }}}
-"
-
-" plugin
-" deoplede {{{
+" plugin {{{
+" deoplede 
 let g:deoplete#enable_at_startup = 1
-"}}}
+
 " deoplete-jedi
 let g:deoplete#sources#jedi#show_docstring =1
 
@@ -210,6 +206,9 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
+"unite
+nnoremap <leader>f :<C-u>Unite file<CR>
+nnoremap <silent> <leader>b :<C-u>Unite buffer bookmark<CR>
 "gitgitter
 "let g:gitgutter_sign_column_always=0         " disable gutter" when gitgutter disabled
 "let g:gitgutter_enabled=1                    " enable at start
@@ -221,3 +220,4 @@ endif
 "let g:gitgutter_signs=1                      " enable signs by default
 "let g:gitgutter_highlight_lines=0            " enable line highlights
 " gitgutter will use Sign Column to set its color, reload it
+"
