@@ -15,6 +15,8 @@ call dein#add('easymotion/vim-easymotion')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-repeat')
 call dein#add('luochen1990/rainbow')
+call dein#add('mbbill/undotree')
+call dein#add('Shougo/neomru.vim')
 " color
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
@@ -23,7 +25,6 @@ call dein#add('powerline/fonts')
 
 
 " programming
-"call dein#add('scrooloose/syntastic')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-fugitive')
@@ -94,6 +95,7 @@ set scrolljump=3
 "set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+"set reload
 
 " formatting
 set pastetoggle=<F12>
@@ -119,13 +121,13 @@ map <F5> :w<CR>:!ipython "%"<CR>
 
 
 " plugin {{{
-" deoplede 
+" deoplede
 let g:deoplete#enable_at_startup = 1
 
 " deoplete-jedi
-let g:deoplete#sources#jedi#show_docstring =1
+let g:deoplete#sources#jedi#show_docstring = 0
 
-" vim-jedi  disable completion
+" vim-jedi disable completion
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
@@ -173,14 +175,22 @@ nnoremap <silent> <leader>tt :TagbarToggle<CR>
 "neomake
 "let g:neomake_open_list = 0 " Disable cursor stealing.
 "let g:neomake_verbose = 2
-let g:neomake_python_enabled_makers = ['pep8', 'flake8']
-"let g:neomake_python_enabled_makers = ['pep8']
+let g:neomake_python_enabled_makers = ['flake8']
 "let g:neomake_python_pep8_maker = {
-  "\ 'args': ['--max-line-length 99'],
-  "\ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-  "\ }
+            "\ 'args': ['--max-line-length=99',],
+            "\ }
 "let g:neomake_python_flake8_maker = { 'args': ['--max-line-length=99'], }
+let g:neomake_python_flake8_maker = {
+            \'args': ['--max-line-length=119'],
+            \ 'errorformat':
+            \ '%E%f:%l: could not compile,%-Z%p^,' .
+            \ '%A%f:%l:%c: %t%n %m,' .
+            \ '%A%f:%l: %t%n %m,' .
+            \ '%-G%.%#',
+            \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+            \ }
 nnoremap <Leader>m :Neomake<CR>
+
 let g:neomake_error_sign = {
     \ 'text': 'E>',
     \ 'texthl': 'ErrorMsg',
@@ -205,13 +215,91 @@ endif
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+"let g:airline#extensions#syntastic#enabled = 1
 
 "unite
-nnoremap <leader>f :<C-u>Unite file<CR>
-nnoremap <silent> <leader>b :<C-u>Unite buffer bookmark<CR>
-"gitgitter
+"nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
+nnoremap <silent><Leader>b :Unite -silent buffer<CR>
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    f [unite]
+
+nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
+    \ -buffer-name=files buffer bookmark file<CR>
+nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
+    \ -buffer-name=files buffer bookmark file<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite
+    \ -buffer-name=register register<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]f
+    \ :<C-u>Unite -buffer-name=resume resume<CR>
+nnoremap <silent> [unite]ma
+    \ :<C-u>Unite mapping<CR>
+nnoremap <silent> [unite]me
+    \ :<C-u>Unite output:message<CR>
+nnoremap  [unite]f  :<C-u>Unite source<CR>
+
+nnoremap <silent> [unite]s
+    \ :<C-u>Unite -buffer-name=files -no-split
+    \ jump_point file_point buffer_tab
+    \ file_rec:! file file/new<CR>
+
+" Start insert.
+"call unite#custom#profile('default', 'context', {
+"\   'start_insert': 1
+"\ })
+
+" Like ctrlp.vim settings.
+"call unite#custom#profile('default', 'context', {
+"\   'start_insert': 1,
+"\   'winheight': 10,
+"\   'direction': 'botright',
+"\ })
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+" Overwrite settings.
+
+imap <buffer> jj      <Plug>(unite_insert_leave)
+"imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+
+imap <buffer><expr> j unite#smart_map('j', '')
+imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+imap <buffer> '     <Plug>(unite_quick_match_default_action)
+nmap <buffer> '     <Plug>(unite_quick_match_default_action)
+imap <buffer><expr> x
+      \ unite#smart_map('x', "\<Plug>(unite_quick_match_jump)")
+nmap <buffer> x     <Plug>(unite_quick_match_jump)
+nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+nnoremap <silent><buffer><expr> l
+      \ unite#smart_map('l', unite#do_action('default'))
+
+let unite = unite#get_current_unite()
+if unite.profile_name ==# 'search'
+nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+else
+nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+endif
+
+nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+nnoremap <buffer><expr> S      unite#mappings#set_current_sorters(
+      \ empty(unite#mappings#get_current_sorters()) ?
+      \ ['sorter_reverse'] : [])
+
+" Runs "split" action by <C-s>.
+imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+endfunction"}}}
+
+
+"gitgutter
+let g:gitgutter_enabled=1                    " enable at start
 "let g:gitgutter_sign_column_always=0         " disable gutter" when gitgutter disabled
-"let g:gitgutter_enabled=1                    " enable at start
+"let g:gitgutter_override_sign_column_highlight = 0
 "let g:gitgutter_max_signs=1000               " max signs
 "let g:gitgutter_sign_added="\u271a"          " heavy greek cross
 "let g:gitgutter_sign_modified="\u279c"       " heavy rounded-tip rightwards arrow
