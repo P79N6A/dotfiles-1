@@ -1,4 +1,4 @@
-" vim: set filetype=vim:
+" vim:
 
 "plugin manage {{{
 if &compatible
@@ -16,7 +16,6 @@ call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-repeat')
 call dein#add('luochen1990/rainbow')
 call dein#add('mbbill/undotree')
-call dein#add('Shougo/neomru.vim')
 " color
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
@@ -28,10 +27,13 @@ call dein#add('powerline/fonts')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-fugitive')
-"call dein#add('scrooloose/syntastic') " syntax checking for vim
 call dein#add('benekastah/neomake') " neovim syntastic
 call dein#add('airblade/vim-gitgutter') "show git diff
 call dein#add('Shougo/unite.vim')
+"call dein#add('Shougo/neoyank.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/unite-outline')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
 " snippet complete
 call dein#add('Shougo/deoplete.nvim')
@@ -218,12 +220,10 @@ endif
 "let g:airline#extensions#syntastic#enabled = 1
 
 "unite
-"nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
 nnoremap <silent><Leader>b :Unite -silent buffer<CR>
 " The prefix key.
 nnoremap    [unite]   <Nop>
-nmap    f [unite]
-
+nmap    <leader>f [unite]
 nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
     \ -buffer-name=files buffer bookmark file<CR>
 nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
@@ -231,18 +231,23 @@ nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
 nnoremap <silent> [unite]r  :<C-u>Unite
     \ -buffer-name=register register<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]f
-    \ :<C-u>Unite -buffer-name=resume resume<CR>
+"nnoremap <silent> [unite]f
+    "\ :<C-u>Unite -buffer-name=resume resume<CR>
 nnoremap <silent> [unite]ma
     \ :<C-u>Unite mapping<CR>
 nnoremap <silent> [unite]me
     \ :<C-u>Unite output:message<CR>
 nnoremap  [unite]f  :<C-u>Unite source<CR>
-
 nnoremap <silent> [unite]s
     \ :<C-u>Unite -buffer-name=files -no-split
     \ jump_point file_point buffer_tab
     \ file_rec:! file file/new<CR>
+nnoremap <silent> [unite]d
+        \ :<C-u>Unite -buffer-name=files -default-action=lcd neomru/directory<CR>
+
+" neoyank
+"let g:unite_source_history_yank_enable = 1
+"nnoremap <space>y :Unite history/yank<cr>
 
 " Start insert.
 "call unite#custom#profile('default', 'context', {
@@ -294,7 +299,6 @@ nnoremap <buffer><expr> S      unite#mappings#set_current_sorters(
 " Runs "split" action by <C-s>.
 imap <silent><buffer><expr> <C-s>     unite#do_action('split')
 endfunction"}}}
-
 
 "gitgutter
 let g:gitgutter_enabled=1                    " enable at start
