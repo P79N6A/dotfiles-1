@@ -22,7 +22,6 @@ call dein#add('vim-airline/vim-airline-themes')
 call dein#add('flazz/vim-colorschemes')
 call dein#add('powerline/fonts')
 
-
 " programming
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('tpope/vim-commentary')
@@ -34,6 +33,7 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('hynek/vim-python-pep8-indent')
 
 " snippet complete
 call dein#add('Shougo/deoplete.nvim')
@@ -97,7 +97,8 @@ set scrolljump=3
 "set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-"set reload
+"set autoread
+"set autowrite
 
 " formatting
 set pastetoggle=<F12>
@@ -105,6 +106,7 @@ set splitright
 set splitbelow
 set nojoinspaces
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
 
 " key map
 let mapleader = ","
@@ -209,6 +211,8 @@ let g:neomake_informational_sign = {
 
 " airline
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 if !exists('g:airline_powerline_fonts')
     " Use the default set of separators with a few customizations
     let g:airline_left_sep='›'  " Slightly fancier than '>'
@@ -297,7 +301,8 @@ nnoremap <buffer><expr> S      unite#mappings#set_current_sorters(
       \ ['sorter_reverse'] : [])
 
 " Runs "split" action by <C-s>.
-imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+"inoremap <silent><buffer><expr> <C-p>     unite#do_action('split') "c-s use by tmux "
+inoremap <silent><buffer><expr> <C-v>     unite#do_action('vsplit')
 endfunction"}}}
 
 "gitgutter
