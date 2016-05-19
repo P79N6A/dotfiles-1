@@ -33,7 +33,6 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-call dein#add('hynek/vim-python-pep8-indent')
 
 " snippet complete
 call dein#add('Shougo/deoplete.nvim')
@@ -45,6 +44,7 @@ call dein#add('honza/vim-snippets')
 " python
 call dein#add('zchee/deoplete-jedi')
 call dein#add('davidhalter/jedi-vim')
+call dein#add('hynek/vim-python-pep8-indent')
 
 " doc
 call dein#add('vimcn/vimcdoc')
@@ -235,6 +235,7 @@ nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
 nnoremap <silent> [unite]r  :<C-u>Unite
     \ -buffer-name=register register<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite grep:.<CR>
 "nnoremap <silent> [unite]f
     "\ :<C-u>Unite -buffer-name=resume resume<CR>
 nnoremap <silent> [unite]ma
