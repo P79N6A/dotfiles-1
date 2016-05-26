@@ -107,6 +107,7 @@ set splitbelow
 set nojoinspaces
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
+let g:bracketed_paste_mode = 0
 
 " key map
 let mapleader = ","
@@ -164,11 +165,12 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+let g:neosnippet#enable_snipmate_compatibility = 1 "add snipmate snippet
+let g:neosnippet#snippets_directory='~/dotfile/snippets'
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " tagbar
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
@@ -180,12 +182,8 @@ nnoremap <silent> <leader>tt :TagbarToggle<CR>
 "let g:neomake_open_list = 0 " Disable cursor stealing.
 "let g:neomake_verbose = 2
 let g:neomake_python_enabled_makers = ['flake8']
-"let g:neomake_python_pep8_maker = {
-            "\ 'args': ['--max-line-length=99',],
-            "\ }
-"let g:neomake_python_flake8_maker = { 'args': ['--max-line-length=99'], }
 let g:neomake_python_flake8_maker = {
-            \'args': ['--max-line-length=119'],
+            \'args': ['--max-line-length=120', '--max-complexity=12'],
             \ 'errorformat':
             \ '%E%f:%l: could not compile,%-Z%p^,' .
             \ '%A%f:%l:%c: %t%n %m,' .
