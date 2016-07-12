@@ -118,7 +118,6 @@ nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 " C
 "
 " python
-iab ipdb import ipdb; ipdb.set_trace()
 map <F5> :w<CR>:!ipython "%"<CR>
 " scheme lisp
 
