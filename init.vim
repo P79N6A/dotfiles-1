@@ -113,6 +113,7 @@ let g:bracketed_paste_mode = 0
 let mapleader = ","
 nmap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
+nmap Y y
 
 " programing {{{
 " C
