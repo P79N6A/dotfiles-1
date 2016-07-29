@@ -33,6 +33,7 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('rizzatti/dash.vim')
 
 " snippet complete
 call dein#add('Shougo/deoplete.nvim')
@@ -101,7 +102,7 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 "set autowrite
 
 " formatting
-set pastetoggle=<F12>
+set pastetoggle=<F3>
 set splitright
 set splitbelow
 set nojoinspaces
@@ -181,6 +182,7 @@ nnoremap <silent> <leader>tt :TagbarToggle<CR>
 "neomake
 "let g:neomake_open_list = 0 " Disable cursor stealing.
 "let g:neomake_verbose = 2
+"let g:neomake_python_enabled_makers = ['pylint','flake8']
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = {
             \'args': ['--max-line-length=120', '--max-complexity=12'],
@@ -191,6 +193,20 @@ let g:neomake_python_flake8_maker = {
             \ '%-G%.%#',
             \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
             \ }
+
+let g:neomake_python_pylint_maker = {
+  \ 'args': [
+  \ '-f', 'text',
+  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+  \ '-r', 'n'
+  \ ],
+  \ 'errorformat':
+  \ '%A%f:%l:%c:%t: %m,' .
+  \ '%A%f:%l: %m,' .
+  \ '%A%f:(%l): %m,' .
+  \ '%-Z%p^%.%#,' .
+  \ '%-G%.%#',
+  \ }
 nnoremap <Leader>m :Neomake<CR>
 
 let g:neomake_error_sign = {
