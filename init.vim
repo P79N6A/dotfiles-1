@@ -29,7 +29,9 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('benekastah/neomake') " neovim syntastic
 call dein#add('airblade/vim-gitgutter') "show git diff
 call dein#add('Shougo/unite.vim')
+
 "call dein#add('Shougo/neoyank.vim')
+
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
@@ -40,12 +42,15 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('honza/vim-snippets')
+
 "call dein#add('matthewsimo/angular-vim-snippets')
 
 " python
 call dein#add('zchee/deoplete-jedi')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('hynek/vim-python-pep8-indent')
+"call dein#add('mindriot101/vim-yapf')
+call dein#add('pignacio/vim-yapf-format')
 
 " doc
 call dein#add('vimcn/vimcdoc')
@@ -62,6 +67,7 @@ filetype plugin indent on
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
+  call dein#update()
 endif
 "End dein Scripts------------------------- }}}
 
@@ -121,6 +127,9 @@ nmap Y y
 "
 " python
 map <F5> :w<CR>:!ipython "%"<CR>
+"autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+"autocmd CompleteDone * pclose " To close preview window of deoplete automagically
+
 " scheme lisp
 
 " programing end }}}
@@ -333,3 +342,8 @@ let g:gitgutter_enabled=1                    " enable at start
 "let g:gitgutter_highlight_lines=0            " enable line highlights
 " gitgutter will use Sign Column to set its color, reload it
 "
+"" yapf
+map <C-y> :YapfFormat<CR>
+vmap <C-y> :YapfFormat<CR>
+imap <C-Y> <c-o>:YapfFormat<CR>
+"vmap <leader> y :YapfFormat<CR>
