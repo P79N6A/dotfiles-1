@@ -93,6 +93,8 @@ set visualbell
 syntax on
 "set helplang=cn
 colorscheme molokai
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 set number
 "set wrap
 "set nospell
@@ -191,33 +193,33 @@ let g:tagbar_sort = 0
 "let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 "neomake
-"let g:neomake_open_list = 0 " Disable cursor stealing.
+let g:neomake_open_list = 0 " Disable cursor stealing.
 "let g:neomake_verbose = 2
 "let g:neomake_python_enabled_makers = ['pylint','flake8']
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = {
-            \'args': ['--max-line-length=120', '--max-complexity=12'],
-            \ 'errorformat':
-            \ '%E%f:%l: could not compile,%-Z%p^,' .
-            \ '%A%f:%l:%c: %t%n %m,' .
-            \ '%A%f:%l: %t%n %m,' .
-            \ '%-G%.%#',
-            \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
-            \ }
+	    \'args': ['--max-line-length=120', '--max-complexity=12'],
+	    \ 'errorformat':
+	    \ '%E%f:%l: could not compile,%-Z%p^,' .
+	    \ '%A%f:%l:%c: %t%n %m,' .
+	    \ '%A%f:%l: %t%n %m,' .
+	    \ '%-G%.%#',
+	    \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+	    \ }
 
-let g:neomake_python_pylint_maker = {
-  \ 'args': [
-  \ '-f', 'text',
-  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
-  \ '-r', 'n'
-  \ ],
-  \ 'errorformat':
-  \ '%A%f:%l:%c:%t: %m,' .
-  \ '%A%f:%l: %m,' .
-  \ '%A%f:(%l): %m,' .
-  \ '%-Z%p^%.%#,' .
-  \ '%-G%.%#',
-  \ }
+"let g:neomake_python_pylint_maker = {
+  "\ 'args': [
+  "\ '-f', 'text',
+  "\ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+  "\ '-r', 'n'
+  "\ ],
+  "\ 'errorformat':
+  "\ '%A%f:%l:%c:%t: %m,' .
+  "\ '%A%f:%l: %m,' .
+  "\ '%A%f:(%l): %m,' .
+  "\ '%-Z%p^%.%#,' .
+  "\ '%-G%.%#',
+  "\ }
 nnoremap <Leader>m :Neomake<CR>
 
 let g:neomake_error_sign = {
@@ -236,8 +238,8 @@ let g:neomake_informational_sign = {
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
 if !exists('g:airline_powerline_fonts')
     " Use the default set of separators with a few customizations
     let g:airline_left_sep='›'  " Slightly fancier than '>'
