@@ -62,6 +62,7 @@ call dein#add('vimcn/tagbar.cnx')
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 call dein#end()
+
 filetype plugin indent on
 
 " If you want to install not installed plugins on startup.
@@ -73,15 +74,15 @@ endif
 
 " plugin mange end ---------------------------------
 
-
 " nvim Config
 "let g:python_host_prog = '/Users/levi/.virtualenvs/neovim2/bin/python'
 "let g:python3_host_prog = '/Users/levi/.virtualenvs/neovim3/bin/python'
 if has("mac")
     let g:python_host_prog = '/usr/local/bin/python'
+    let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 else
-    let g:python_host_prog = '/usr/bin/python'
+    let g:python2_host_prog = '/usr/bin/python'
     let g:python3_host_prog = '/usr/bin/python3'
 endif
 "
@@ -160,7 +161,7 @@ let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$',
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
+"let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
