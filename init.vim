@@ -184,6 +184,7 @@ endif
 
 " tagbar
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
+let g:tagbar_sort = 0
 
 " rainbow
 "let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
@@ -246,11 +247,13 @@ if !exists('g:airline_symbols')
 endif
 "let g:airline#extensions#syntastic#enabled = 1
 
+
 "unite
 nnoremap <silent><Leader>b :Unite -silent buffer<CR>
 " The prefix key.
 nnoremap    [unite]   <Nop>
 nmap    <leader>f [unite]
+
 nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
     \ -buffer-name=files buffer bookmark file<CR>
 nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
@@ -272,6 +275,14 @@ nnoremap <silent> [unite]s
     \ file_rec:! file file/new<CR>
 nnoremap <silent> [unite]d
         \ :<C-u>Unite -buffer-name=files -default-action=lcd neomru/directory<CR>
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+  \ '-i --vimgrep --hidden --ignore ' .
+  \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+endif
+
 
 " neoyank
 "let g:unite_source_history_yank_enable = 1

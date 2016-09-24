@@ -16,7 +16,7 @@ alias la='ls -A'
 
 
 alias psg='ps -ef | grep'
-alias vi=vim
+alias vi=vi
 
 # code c
 alias mkcs='find . -name "*.[hc]" -o \
