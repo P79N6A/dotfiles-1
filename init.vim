@@ -11,16 +11,19 @@ call dein#add('Shougo/dein.vim')
 " general
 call dein#add('scrooloose/nerdtree')
 call dein#add('majutsushi/tagbar')
-call dein#add('easymotion/vim-easymotion')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-repeat')
-call dein#add('luochen1990/rainbow')
 call dein#add('mbbill/undotree')
+
+" edit
+call dein#add('easymotion/vim-easymotion')
+
 " color
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('flazz/vim-colorschemes')
 call dein#add('powerline/fonts')
+call dein#add('luochen1990/rainbow')
 
 " programming
 call dein#add('scrooloose/nerdcommenter')
@@ -32,13 +35,15 @@ call dein#add('Shougo/unite.vim')
 
 "call dein#add('Shougo/neoyank.vim')
 
+" browse
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('rizzatti/dash.vim')
 
-" snippet complete
+" complete
 call dein#add('Shougo/deoplete.nvim')
+" snippet
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('honza/vim-snippets')
@@ -53,7 +58,7 @@ call dein#add('hynek/vim-python-pep8-indent')
 call dein#add('pignacio/vim-yapf-format')
 
 " doc
-call dein#add('vimcn/vimcdoc')
+"call dein#add('vimcn/vimcdoc')
 call dein#add('vimcn/NERD_tree.vim.cnx')
 call dein#add('vimcn/NERD_commenter.cnx')
 call dein#add('vimcn/ctrlp.cnx')
@@ -178,8 +183,10 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 let g:neosnippet#enable_snipmate_compatibility = 1 "add snipmate snippet
 let g:neosnippet#snippets_directory='~/dotfile/snippets'
+
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
