@@ -54,7 +54,6 @@ call dein#add('honza/vim-snippets')
 call dein#add('zchee/deoplete-jedi')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('hynek/vim-python-pep8-indent')
-"call dein#add('mindriot101/vim-yapf')
 call dein#add('pignacio/vim-yapf-format')
 
 " doc
