@@ -17,6 +17,7 @@ call dein#add('mbbill/undotree')
 
 " edit
 call dein#add('easymotion/vim-easymotion')
+call dein#add('tpope/vim-unimpaired')
 
 " color
 call dein#add('vim-airline/vim-airline')
@@ -55,6 +56,7 @@ call dein#add('zchee/deoplete-jedi')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('hynek/vim-python-pep8-indent')
 call dein#add('pignacio/vim-yapf-format')
+"call dein#add('drinksober/nvim-yapf-formater')
 
 " doc
 "call dein#add('vimcn/vimcdoc')
@@ -366,3 +368,4 @@ map <C-y> :YapfFormat<CR>
 vmap <C-y> :YapfFormat<CR>
 imap <C-Y> <c-o>:YapfFormat<CR>
 "vmap <leader> y :YapfFormat<CR>
+"let g:yapf_format_style = "google"
