@@ -65,7 +65,8 @@ call dein#add('vimcn/NERD_commenter.cnx')
 call dein#add('vimcn/ctrlp.cnx')
 call dein#add('vimcn/tagbar.cnx')
 
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+"call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+call dein#add('Shougo/vimshell.vim')
 
 call dein#end()
 
