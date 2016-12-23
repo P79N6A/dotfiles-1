@@ -204,7 +204,6 @@ let g:tagbar_sort = 0
 "neomake
 let g:neomake_open_list = 0 " Disable cursor stealing.
 "let g:neomake_verbose = 2
-"let g:neomake_python_enabled_makers = ['pylint','flake8']
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = {
 	    \'args': ['--max-line-length=120', '--max-complexity=12'],
@@ -230,20 +229,20 @@ let g:neomake_python_flake8_maker = {
   "\ '%-G%.%#',
   "\ }
 nnoremap <Leader>m :Neomake<CR>
-
-let g:neomake_error_sign = {
-    \ 'text': 'E>',
-    \ 'texthl': 'ErrorMsg',
-    \ }
-let g:neomake_warning_sign = {
-    \ 'text': 'W>',
-    \ 'texthl': 'WarningMsg',
-    \ }
-let g:neomake_informational_sign = {
-    \ 'text': 'I>',
-    \ 'texthl': 'WarningMsg',
-    \ }
 "autocmd! BufWritePost,BufReadPost * Neomake
+
+"let g:neomake_error_sign = {
+    "\ 'text': 'E>'
+    "\ 'texthl': 'ErrorMsg',
+    "\ }
+"let g:neomake_warning_sign = {
+    "\ 'text': 'W>',
+    "\ 'texthl': 'WarningMsg',
+    "\ }
+"let g:neomake_informational_sign = {
+    "\ 'text': 'I>',
+    "\ 'texthl': 'WarningMsg',
+    "\ }
 
 " airline
 let g:airline_powerline_fonts = 1
