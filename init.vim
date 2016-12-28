@@ -11,11 +11,11 @@ call dein#add('Shougo/dein.vim')
 " general
 call dein#add('scrooloose/nerdtree')
 call dein#add('majutsushi/tagbar')
-call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-repeat')
 call dein#add('mbbill/undotree')
 
 " edit
+call dein#add('tpope/vim-surround')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('tpope/vim-unimpaired')
 
@@ -78,12 +78,9 @@ if dein#check_install()
   call dein#install()
 endif
 "End dein Scripts------------------------- }}}
-
 " plugin mange end ---------------------------------
 
 " nvim Config
-"let g:python_host_prog = '/Users/levi/.virtualenvs/neovim2/bin/python'
-"let g:python3_host_prog = '/Users/levi/.virtualenvs/neovim3/bin/python'
 if has("mac")
     let g:python_host_prog = '/usr/local/bin/python'
     let g:python2_host_prog = '/usr/local/bin/python'
