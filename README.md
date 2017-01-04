@@ -1,4 +1,2 @@
 # dotfile
-as
-asd
-asdf
+dotfile for myself
