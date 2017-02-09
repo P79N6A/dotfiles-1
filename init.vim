@@ -59,6 +59,10 @@ call dein#add('pignacio/vim-yapf-format')
 call dein#add('heavenshell/vim-pydocstring')
 "call dein#add('drinksober/nvim-yapf-formater')
 
+"go
+call dein#add('fatih/vim-go')
+call dein#add('zchee/deoplete-go')
+
 " doc
 "call dein#add('vimcn/vimcdoc')
 call dein#add('vimcn/NERD_tree.vim.cnx')
@@ -119,15 +123,20 @@ set pastetoggle=<F3>
 set splitright
 set splitbelow
 set nojoinspaces
+set ts=4
+
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
 let g:bracketed_paste_mode = 0
 
-" key map
+" key map, hotkey
 let mapleader = ","
 nmap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 nmap Y y
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 " programing {{{
 " C
@@ -360,14 +369,19 @@ let g:gitgutter_enabled=1                    " enable at start
 "let g:gitgutter_signs=1                      " enable signs by default
 "let g:gitgutter_highlight_lines=0            " enable line highlights
 " gitgutter will use Sign Column to set its color, reload it
-"
+
+" python plugin
 "" yapf
 map <C-y> :YapfFormat<CR>
 vmap <C-y> :YapfFormat<CR>
 imap <C-Y> <c-o>:YapfFormat<CR>
 "vmap <leader> y :YapfFormat<CR>
 "let g:yapf_format_style = "google"
-"
 
 "pydocstring
 nmap <silent> <C-m> <Plug>(pydocstring)
+
+"go plugin
+"vim-go
+au FileType go nmap <leader>gd <Plug>(go-doc)
+au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
