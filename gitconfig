@@ -1,0 +1,12 @@
+[user]
+	name = Levi Hu
+	email = ge4los@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+[diff]
+    tool = vimdiff
+[merge]
+	tool = vimdiff
+[credential]
+	helper = store
