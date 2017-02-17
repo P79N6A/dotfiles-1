@@ -6,6 +6,8 @@ export ZSH=/Users/levi/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME=seeker
+#ZSH_THEME=bira
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -81,6 +83,9 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+source /usr/local/share/antigen/antigen.zsh
+
 export TEST_URL="http://0.0.0.0:8080"
 export SL_ENV="DEV"
 export HOMEBREW_GITHUB_API_TOKEN="021f916b34aff5765aa9870664b5af5475128852"
@@ -89,7 +94,7 @@ export PATH=/usr/local/sbin:/Users/levi/dev_thunder/script:$PATH
 export GOPATH=/Users/levi/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
-export PATH=~/anaconda2/bin:"$PATH"
+export PATH="$PATH":~/anaconda2/bin
 
 #aliases
 #[[ -f ~/.aliases ]] && source ~/.aliases
