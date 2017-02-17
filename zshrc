@@ -90,3 +90,6 @@ export GOPATH=/Users/levi/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
 export PATH=~/anaconda2/bin:"$PATH"
+
+#aliases
+#[[ -f ~/.aliases ]] && source ~/.aliases
