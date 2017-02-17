@@ -1,1 +1,1 @@
-EXCLUDES="README.md snippets init.vim style mkdotfile.sh"
+EXCLUDES="README.md snippets mkdotfile.sh"
