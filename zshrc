@@ -1,95 +1,41 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/levi/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME=seeker
-#ZSH_THEME=bira
-
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git z brew python pip virtualenv pyenv virtualenvwrapper tmux tmuxinator common-aliases go)
-#plugins=(git z brew python pip virtualenv  virtualenvwrapper tmuxinator tmux common-aliases)
-
-# User configuration
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-#export VIRTUALENVWRAPPER_PYTHON=`which python`
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
+if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
  else
    export EDITOR='mvim'
  fi
 export EDITOR='nvim'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+#antigene
 source /usr/local/share/antigen/antigen.zsh
 
+antigen use oh-my-zsh
+
+antigen theme tonyseek/oh-my-zsh-seeker-theme seeker
+#plugins=(git z brew python pip virtualenv pyenv virtualenvwrapper tmux tmuxinator common-aliases go)
+
+antigen bundle git
+antigen bundle z
+antigen bundle brew
+antigen bundle python
+antigen bundle pip
+antigen bundle virtualenv
+antigen bundle pyenv
+antigen bundle virtualenvwrapper
+antigen bundle tmux
+antigen bundle tmuxinator
+antigen bundle common-aliases
+antigen bundle go
+
+antigen apply
+
+
+#Export Variables
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export TEST_URL="http://0.0.0.0:8080"
 export SL_ENV="DEV"
 export HOMEBREW_GITHUB_API_TOKEN="021f916b34aff5765aa9870664b5af5475128852"
-export PATH=/usr/local/sbin:/Users/levi/dev_thunder/script:$PATH
+export PATH=/Users/levi/dev_thunder/script:$PATH
 
 export GOPATH=/Users/levi/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
@@ -98,3 +44,4 @@ export PATH="$PATH":~/anaconda2/bin
 
 #aliases
 #[[ -f ~/.aliases ]] && source ~/.aliases
+#
