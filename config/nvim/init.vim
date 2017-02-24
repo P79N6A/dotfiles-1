@@ -57,6 +57,7 @@ call dein#add('davidhalter/jedi-vim')
 call dein#add('hynek/vim-python-pep8-indent')
 call dein#add('pignacio/vim-yapf-format')
 call dein#add('heavenshell/vim-pydocstring')
+"call dein#add('chase/vim-ansible-yaml')
 "call dein#add('drinksober/nvim-yapf-formater')
 
 "go
@@ -126,6 +127,7 @@ set nojoinspaces
 set ts=4
 
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
 let g:bracketed_paste_mode = 0
 

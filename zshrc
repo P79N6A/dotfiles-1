@@ -13,6 +13,7 @@ antigen use oh-my-zsh
 
 antigen theme tonyseek/oh-my-zsh-seeker-theme seeker
 #plugins=(git z brew python pip virtualenv pyenv virtualenvwrapper tmux tmuxinator common-aliases go)
+#plugins =(virtualenvwrapper)
 
 antigen bundle git
 antigen bundle z
@@ -26,6 +27,7 @@ antigen bundle tmux
 antigen bundle tmuxinator
 antigen bundle common-aliases
 antigen bundle go
+antigen bundle history-substring-search
 
 antigen apply
 
