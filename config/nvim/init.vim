@@ -30,9 +30,11 @@ call dein#add('luochen1990/rainbow')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-fugitive')
-call dein#add('benekastah/neomake') " neovim syntastic
 call dein#add('airblade/vim-gitgutter') "show git diff
 call dein#add('Shougo/unite.vim')
+
+" neovim syntastic
+call dein#add('benekastah/neomake')
 
 "call dein#add('Shougo/neoyank.vim')
 
@@ -44,6 +46,8 @@ call dein#add('rizzatti/dash.vim')
 
 " complete
 call dein#add('Shougo/deoplete.nvim')
+call dein#add('Raimondi/delimitMate')
+
 " snippet
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
@@ -60,7 +64,7 @@ call dein#add('heavenshell/vim-pydocstring')
 "call dein#add('chase/vim-ansible-yaml')
 "call dein#add('drinksober/nvim-yapf-formater')
 
-"go
+" go
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go')
 
