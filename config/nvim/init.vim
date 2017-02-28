@@ -1,5 +1,4 @@
 " vim:
-
 "plugin manage {{{
 if &compatible
   set nocompatible               " Be iMproved
@@ -25,6 +24,7 @@ call dein#add('vim-airline/vim-airline-themes')
 call dein#add('flazz/vim-colorschemes')
 call dein#add('powerline/fonts')
 call dein#add('luochen1990/rainbow')
+"call dein#add('edkolev/tmuxline.vim')
 
 " programming
 call dein#add('scrooloose/nerdcommenter')
@@ -214,57 +214,25 @@ let g:neomake_open_list = 0 " Disable cursor stealing.
 "let g:neomake_verbose = 2
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = {
-	    \'args': ['--max-line-length=120', '--max-complexity=12'],
-	    \ 'errorformat':
-	    \ '%E%f:%l: could not compile,%-Z%p^,' .
-	    \ '%A%f:%l:%c: %t%n %m,' .
-	    \ '%A%f:%l: %t%n %m,' .
-	    \ '%-G%.%#',
-	    \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
-	    \ }
+						\'args': ['--max-line-length=120', '--max-complexity=12'],
+						\ 'errorformat':
+						\ '%E%f:%l: could not compile,%-Z%p^,' .
+						\ '%A%f:%l:%c: %t%n %m,' .
+						\ '%A%f:%l: %t%n %m,' .
+						\ '%-G%.%#',
+						\ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+						\ }
 
-"let g:neomake_python_pylint_maker = {
-  "\ 'args': [
-  "\ '-f', 'text',
-  "\ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
-  "\ '-r', 'n'
-  "\ ],
-  "\ 'errorformat':
-  "\ '%A%f:%l:%c:%t: %m,' .
-  "\ '%A%f:%l: %m,' .
-  "\ '%A%f:(%l): %m,' .
-  "\ '%-Z%p^%.%#,' .
-  "\ '%-G%.%#',
-  "\ }
 nnoremap <Leader>m :Neomake<CR>
 "autocmd! BufWritePost,BufReadPost * Neomake
 
-"let g:neomake_error_sign = {
-    "\ 'text': 'E>'
-    "\ 'texthl': 'ErrorMsg',
-    "\ }
-"let g:neomake_warning_sign = {
-    "\ 'text': 'W>',
-    "\ 'texthl': 'WarningMsg',
-    "\ }
-"let g:neomake_informational_sign = {
-    "\ 'text': 'I>',
-    "\ 'texthl': 'WarningMsg',
-    "\ }
-
 " airline
 let g:airline_powerline_fonts = 1
-"let g:airline_left_sep=''
-"let g:airline_right_sep=''
-if !exists('g:airline_powerline_fonts')
-    " Use the default set of separators with a few customizations
-    let g:airline_left_sep='›'  " Slightly fancier than '>'
-    let g:airline_right_sep='‹' " Slightly fancier than '<'
-endif
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-"let g:airline#extensions#syntastic#enabled = 1
+"if !exists('g:airline_powerline_fonts')
+	" Use the default set of separators with a few customizations
+	"let g:airline_left_sep='›'  " Slightly fancier than '>'
+	"let g:airline_right_sep='‹' " Slightly fancier than '<'
+"endif
 
 
 "unite

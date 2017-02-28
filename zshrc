@@ -47,3 +47,4 @@ export PATH="$PATH":~/anaconda2/bin
 #aliases
 #[[ -f ~/.aliases ]] && source ~/.aliases
 #
+alias vim='nvim'
