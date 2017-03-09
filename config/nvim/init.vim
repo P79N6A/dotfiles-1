@@ -78,6 +78,8 @@ call dein#add('vimcn/tagbar.cnx')
 "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 call dein#add('Shougo/vimshell.vim')
 
+call dein#add('nathangrigg/vim-beancount')
+
 call dein#end()
 
 filetype plugin indent on
@@ -132,6 +134,7 @@ set ts=4
 
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType beancount setlocal ts=2 sts=2 sw=2 expandtab
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
 let g:bracketed_paste_mode = 0
 
@@ -139,14 +142,15 @@ let g:bracketed_paste_mode = 0
 let mapleader = ","
 nmap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
-nmap Y y
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+"nmap Y y$
+"map <C-n> :cnext<CR>
+"map <C-m> :cprevious<CR>
+"nnoremap <leader>a :cclose<CR>
+cmap w!! w !sudo tee % > /dev/null
 
 " programing {{{
 " C
-"
+
 " python
 map <F5> :w<CR>:!ipython "%"<CR>
 "autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
@@ -331,6 +335,7 @@ nnoremap <buffer><expr> S      unite#mappings#set_current_sorters(
 inoremap <silent><buffer><expr> <C-v>     unite#do_action('vsplit')
 endfunction"}}}
 
+
 "gitgutter
 let g:gitgutter_enabled=1                    " enable at start
 "let g:gitgutter_sign_column_always=0         " disable gutter" when gitgutter disabled
@@ -348,7 +353,7 @@ let g:gitgutter_enabled=1                    " enable at start
 "" yapf
 map <C-y> :YapfFormat<CR>
 vmap <C-y> :YapfFormat<CR>
-imap <C-Y> <c-o>:YapfFormat<CR>
+"imap <C-Y> <c-o>:YapfFormat<CR>
 "vmap <leader> y :YapfFormat<CR>
 "let g:yapf_format_style = "google"
 
