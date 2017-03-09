@@ -113,7 +113,6 @@ set termguicolors
 set number
 "set wrap
 "set nospell
-let $LANG = 'en'
 set showmatch                   " Show matching brackets/parenthesis
 set ignorecase
 set smartcase
