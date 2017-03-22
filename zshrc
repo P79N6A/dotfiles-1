@@ -28,6 +28,7 @@ antigen bundle tmux
 antigen bundle tmuxinator
 antigen bundle common-aliases
 antigen bundle go
+antigen bundle docker
 antigen bundle history-substring-search
 
 antigen apply
@@ -50,3 +51,4 @@ export SL_ENV="DEV"
 
 #aliases
 #[[ -f ~/.aliases ]] && source ~/.aliases
+alias vim="nvim"

@@ -67,6 +67,7 @@ call dein#add('heavenshell/vim-pydocstring')
 " go
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go')
+call dein#add('uarun/vim-protobuf')
 
 " doc
 "call dein#add('vimcn/vimcdoc')
@@ -220,6 +221,9 @@ let g:tagbar_sort = 0
 let g:neomake_open_list = 0 " Disable cursor stealing.
 "let g:neomake_verbose = 2
 let g:neomake_python_enabled_makers = ['flake8']
+"let g:neomake_python_flake8_maker = {
+						"\'args': ['--max-line-length=120', '--max-complexity=12'],
+						"\ }
 let g:neomake_python_flake8_maker = {
 						\'args': ['--max-line-length=120', '--max-complexity=12'],
 						\ 'errorformat':
