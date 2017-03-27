@@ -22,8 +22,8 @@ call dein#add('tpope/vim-unimpaired')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('flazz/vim-colorschemes')
-call dein#add('powerline/fonts')
 call dein#add('luochen1990/rainbow')
+"call dein#add('ryanoasis/vim-devicons')
 "call dein#add('edkolev/tmuxline.vim')
 
 " programming
@@ -147,6 +147,7 @@ nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 "map <C-m> :cprevious<CR>
 "nnoremap <leader>a :cclose<CR>
 cmap w!! w !sudo tee % > /dev/null
+cabbrev h vert h
 
 " programing {{{
 " C
