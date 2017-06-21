@@ -3,4 +3,8 @@
 _build
 .DS_Store
 __pycache__/
+/target/
+/*.iml
+*.iml
+/*.idea
 

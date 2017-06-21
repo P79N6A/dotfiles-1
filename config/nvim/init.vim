@@ -362,7 +362,7 @@ vmap <C-y> :YapfFormat<CR>
 "let g:yapf_format_style = "google"
 
 "pydocstring
-nmap <silent> <C-m> <Plug>(pydocstring)
+"nmap <silent> <C-i> <Plug>(pydocstring)
 
 "go plugin
 "vim-go
