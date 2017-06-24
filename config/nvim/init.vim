@@ -73,7 +73,6 @@ call dein#add('uarun/vim-protobuf')
 "call dein#add('vimcn/vimcdoc')
 call dein#add('vimcn/NERD_tree.vim.cnx')
 call dein#add('vimcn/NERD_commenter.cnx')
-call dein#add('vimcn/ctrlp.cnx')
 call dein#add('vimcn/tagbar.cnx')
 
 "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
