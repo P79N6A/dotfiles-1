@@ -8,30 +8,7 @@ export EDITOR='nvim'
 
 #antigene
 source /usr/local/share/antigen/antigen.zsh
-
-antigen use oh-my-zsh
-
-antigen theme tonyseek/oh-my-zsh-seeker-theme seeker
-#plugins=(git z brew python pip virtualenv pyenv virtualenvwrapper tmux tmuxinator common-aliases go)
-#plugins =(virtualenvwrapper)
-
-antigen bundle osx
-antigen bundle git
-antigen bundle z
-antigen bundle brew
-antigen bundle python
-antigen bundle pip
-antigen bundle pyenv
-antigen bundle virtualenv
-antigen bundle virtualenvwrapper
-antigen bundle tmux
-antigen bundle tmuxinator
-antigen bundle common-aliases
-antigen bundle go
-antigen bundle docker
-antigen bundle history-substring-search
-
-antigen apply
+antigen init .antigenrc
 
 
 #Export Variables

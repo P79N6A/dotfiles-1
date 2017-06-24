@@ -138,7 +138,7 @@ autocmd FileType beancount setlocal ts=2 sts=2 sw=2 expandtab
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
 let g:bracketed_paste_mode = 0
 
-" key map, hotkey
+" key map & hotkey
 let mapleader = ","
 nmap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
@@ -148,6 +148,7 @@ nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 "nnoremap <leader>a :cclose<CR>
 cmap w!! w !sudo tee % > /dev/null
 cabbrev h vert h
+
 
 " programing {{{
 " C
@@ -192,10 +193,15 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 " neosnippet
-" Plugin key-mappings.
+" " Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "imap <expr><TAB>
 " \ pumvisible() ? "\<C-n>" :
 " \ neosnippet#expandable_or_jumpable() ?
@@ -204,7 +210,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 let g:neosnippet#enable_snipmate_compatibility = 1 "add snipmate snippet
-let g:neosnippet#snippets_directory='~/dotfile/snippets'
+let g:neosnippet#snippets_directory='~/.dotfiles/snippets'
 
 " For conceal markers.
 if has('conceal')
