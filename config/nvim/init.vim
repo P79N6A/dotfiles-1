@@ -106,12 +106,10 @@ endif
 " General {{{
 set visualbell
 syntax on
-"set helplang=cn
 colorscheme molokai
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 set number
-"set wrap
 "set nospell
 set showmatch                   " Show matching brackets/parenthesis
 set ignorecase
@@ -182,7 +180,7 @@ let g:jedi#smart_auto_mappings = 0
 map <C-e> :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
-let NERDTreeShowBookmarks=1
+let NERDTreeShowBookmarks=0
 let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
