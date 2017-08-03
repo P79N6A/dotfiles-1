@@ -128,6 +128,8 @@ set splitright
 set splitbelow
 set nojoinspaces
 set ts=4
+set shiftwidth=4
+set expandtab
 
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
