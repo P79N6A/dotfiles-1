@@ -2,7 +2,7 @@
 source /usr/local/share/antigen/antigen.zsh
 antigen init .antigenrc
 
-export PATH="$HOME/bin:$PATH";
+export PATH=$HOME/bin:/usr/local/opt/python/libexec/bin:$PATH;
 
 
 # source file
