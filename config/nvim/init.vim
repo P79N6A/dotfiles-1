@@ -34,7 +34,8 @@ call dein#add('airblade/vim-gitgutter') "show git diff
 call dein#add('Shougo/unite.vim')
 
 " neovim syntastic
-call dein#add('benekastah/neomake')
+"call dein#add('benekastah/neomake')
+call dein#add('neomake/neomake')
 
 "call dein#add('Shougo/neoyank.vim')
 
@@ -66,14 +67,15 @@ call dein#add('heavenshell/vim-pydocstring')
 
 " go
 call dein#add('fatih/vim-go')
-call dein#add('zchee/deoplete-go')
+call dein#add('sebdah/vim-delve')
+call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('uarun/vim-protobuf')
 
 " doc
 "call dein#add('vimcn/vimcdoc')
-call dein#add('vimcn/NERD_tree.vim.cnx')
+"call dein#add('vimcn/NERD_tree.vim.cnx')
 call dein#add('vimcn/NERD_commenter.cnx')
-call dein#add('vimcn/tagbar.cnx')
+"call dein#add('vimcn/tagbar.cnx')
 
 "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 call dein#add('Shougo/vimshell.vim')
@@ -93,8 +95,8 @@ endif
 
 " nvim Config
 if has("mac")
-    let g:python_host_prog = '/usr/local/bin/python'
-    let g:python2_host_prog = '/usr/local/bin/python'
+    let g:python_host_prog = '/usr/local/bin/python2'
+    let g:python2_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/usr/local/bin/python3'
 else
     let g:python2_host_prog = '/usr/bin/python'
@@ -130,6 +132,7 @@ set nojoinspaces
 set ts=4
 set shiftwidth=4
 set expandtab
+set mouse=a
 
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -177,6 +180,10 @@ let g:jedi#popup_select_first = 0
 let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 let g:jedi#smart_auto_mappings = 0
+
+
+"deoplete-go
+let g:deoplete#sources#go#gocode_binary = '$GOPATH/bin/gocode'
 
 " nerdtree
 map <C-e> :NERDTreeToggle<CR>
@@ -231,7 +238,7 @@ let g:neomake_python_enabled_makers = ['flake8']
 						"\'args': ['--max-line-length=120', '--max-complexity=12'],
 						"\ }
 let g:neomake_python_flake8_maker = {
-						\'args': ['--max-line-length=120', '--max-complexity=12'],
+						\'args': ['--max-line-length=120', '--max-complexity=12', '--ignore=H301,H306'],
 						\ 'errorformat':
 						\ '%E%f:%l: could not compile,%-Z%p^,' .
 						\ '%A%f:%l:%c: %t%n %m,' .

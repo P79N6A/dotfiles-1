@@ -8,9 +8,10 @@ export EDITOR='nvim';
 export PATH="/usr/local/sbin:$PATH"
 
 #Export Variables
-#export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=$HOME/dev_thunder/script:$HOME/bin:/usr/local/opt/python/libexec/bin:$PATH;
+
+# github
 export HOMEBREW_GITHUB_API_TOKEN="021f916b34aff5765aa9870664b5af5475128852"
-export PATH=/Users/levi/dev_thunder/script:$PATH
 
 # for go
 export GOPATH=/Users/levi/go
