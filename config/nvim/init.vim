@@ -71,6 +71,10 @@ call dein#add('sebdah/vim-delve')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('uarun/vim-protobuf')
 
+" groovy
+"call dein#add('thanethomson/vim-jenkinsfile')
+call dein#add('modille/groovy.vim')
+
 " doc
 "call dein#add('vimcn/vimcdoc')
 "call dein#add('vimcn/NERD_tree.vim.cnx')
@@ -238,7 +242,7 @@ let g:neomake_python_enabled_makers = ['flake8']
 						"\'args': ['--max-line-length=120', '--max-complexity=12'],
 						"\ }
 let g:neomake_python_flake8_maker = {
-						\'args': ['--max-line-length=120', '--max-complexity=12', '--ignore=H301,H306'],
+						\'args': ['--max-line-length=120', '--max-complexity=12', '--ignore=H301,H306,H404'],
 						\ 'errorformat':
 						\ '%E%f:%l: could not compile,%-Z%p^,' .
 						\ '%A%f:%l:%c: %t%n %m,' .
