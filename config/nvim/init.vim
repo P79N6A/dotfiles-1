@@ -32,6 +32,7 @@ call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter') "show git diff
 call dein#add('Shougo/unite.vim')
+call dein#add('editorconfig/editorconfig-vim')
 
 " neovim syntastic
 "call dein#add('benekastah/neomake')
@@ -139,8 +140,8 @@ set expandtab
 set mouse=a
 
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType beancount setlocal ts=2 sts=2 sw=2 expandtab
+"autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+"autocmd FileType beancount setlocal ts=2 sts=2 sw=2 expandtab
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
 let g:bracketed_paste_mode = 0
 
