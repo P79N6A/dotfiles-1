@@ -149,6 +149,8 @@ let g:bracketed_paste_mode = 0
 let mapleader = ","
 nmap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
+" quick cout search
+map ,* *<C-O>:%s///gn<CR>``
 "nmap Y y$
 "map <C-n> :cnext<CR>
 "map <C-m> :cprevious<CR>
