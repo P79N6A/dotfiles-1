@@ -34,9 +34,10 @@ call dein#add('airblade/vim-gitgutter') "show git diff
 call dein#add('Shougo/unite.vim')
 call dein#add('editorconfig/editorconfig-vim')
 
-" neovim syntastic
+" neovim syntastic lint
 "call dein#add('benekastah/neomake')
-call dein#add('neomake/neomake')
+"call dein#add('neomake/neomake')
+call dein#add('w0rp/ale')
 
 "call dein#add('Shougo/neoyank.vim')
 
@@ -237,25 +238,17 @@ let g:tagbar_sort = 0
 " rainbow
 "let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-"neomake
-let g:neomake_open_list = 0 " Disable cursor stealing.
-"let g:neomake_verbose = 2
-let g:neomake_python_enabled_makers = ['flake8']
-"let g:neomake_python_flake8_maker = {
-						"\'args': ['--max-line-length=120', '--max-complexity=12'],
-						"\ }
-let g:neomake_python_flake8_maker = {
-						\'args': ['--max-line-length=120', '--max-complexity=12', '--ignore=H301,H306,H404'],
-						\ 'errorformat':
-						\ '%E%f:%l: could not compile,%-Z%p^,' .
-						\ '%A%f:%l:%c: %t%n %m,' .
-						\ '%A%f:%l: %t%n %m,' .
-						\ '%-G%.%#',
-						\ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
-						\ }
-
-nnoremap <Leader>m :Neomake<CR>
-"autocmd! BufWritePost,BufReadPost * Neomake
+"ale
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
+let g:ale_fixers = {
+\   'python': ['yapf', 'isort', 'trim_whitespace'],
+\}
+let g:ale_python_flake8_options = '--max-line-length=120 --max-complexity=12 --ignore=H301,H306,H404'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " airline
 let g:airline_powerline_fonts = 1
