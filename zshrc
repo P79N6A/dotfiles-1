@@ -1,6 +1,6 @@
 #antigene
 source /usr/local/share/antigen/antigen.zsh
-antigen init .antigenrc
+antigen init ~/.antigenrc
 
 
 export GO15VENDOREXPERIMENT=1
