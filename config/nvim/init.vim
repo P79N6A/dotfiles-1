@@ -246,7 +246,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'python': ['yapf', 'isort', 'trim_whitespace'],
 \}
-let g:ale_python_flake8_options = '--max-line-length=120 --max-complexity=12 --ignore=H301,H306,H404'
+"let g:ale_python_flake8_options = '--max-line-length=120 --max-complexity=12 --ignore=H301,H306,H404'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
