@@ -2,10 +2,6 @@
 source /usr/local/share/antigen/antigen.zsh
 antigen init ~/.antigenrc
 
-
-export GO15VENDOREXPERIMENT=1
-
-
 # source file
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";

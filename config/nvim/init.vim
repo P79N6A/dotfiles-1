@@ -101,8 +101,9 @@ endif
 
 " nvim Config
 if has("mac")
-    let g:python_host_prog = '/usr/local/bin/python2'
-    let g:python2_host_prog = '/usr/local/bin/python2'
+    "let g:python_host_prog = '/usr/local/bin/python2'
+    let g:python_host_prog = '/usr/local/opt/python@2/bin/python2'
+    let g:python2_host_prog = '/usr/local/opt/python@2/bin/python2'
     let g:python3_host_prog = '/usr/local/bin/python3'
 else
     let g:python2_host_prog = '/usr/bin/python'
@@ -138,7 +139,7 @@ set nojoinspaces
 set ts=4
 set shiftwidth=4
 set expandtab
-set mouse=a
+"set mouse=a
 
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
 "autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -293,7 +294,6 @@ if executable('ag')
   \ '-i --vimgrep --hidden --ignore ' .
   \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
 endif
-
 
 " neoyank
 "let g:unite_source_history_yank_enable = 1

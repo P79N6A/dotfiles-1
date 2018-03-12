@@ -48,8 +48,5 @@ windows:
   - server 2:
   - vim2:
   - debug:
-      layout: main-vertical
-      panes:
-          - dev1
-          - dev2
   - nvim3:
+  - debug:
