@@ -11,14 +11,15 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH=$HOME/dev_thunder/script:$HOME/bin:$PATH;
 
 #for python
-export PATH="/usr/local/opt/python@2/bin:$PATH"
+export PATH=/usr/local/opt/python@2/bin:/usr/local/opt/python/libexec/bin:$PATH
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
 
 # github
 export HOMEBREW_GITHUB_API_TOKEN="021f916b34aff5765aa9870664b5af5475128852"
 
 # for go
 export GOPATH=/Users/levi/go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
+export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
 export GO15VENDOREXPERIMENT=1
 
 # xunlei

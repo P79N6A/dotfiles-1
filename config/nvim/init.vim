@@ -115,8 +115,9 @@ endif
 " General {{{
 set visualbell
 syntax on
-colorscheme molokai
+let g:rehash256 = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme molokai
 set termguicolors
 set number
 "set nospell
@@ -129,7 +130,7 @@ set scrolljump=3
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 "set autoread
-"set autowrite
+set autowrite
 
 " formatting
 set pastetoggle=<F3>
@@ -154,9 +155,9 @@ nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
 " quick cout search
 map ,* *<C-O>:%s///gn<CR>``
 "nmap Y y$
-"map <C-n> :cnext<CR>
-"map <C-m> :cprevious<CR>
-"nnoremap <leader>a :cclose<CR>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 cmap w!! w !sudo tee % > /dev/null
 cabbrev h vert h
 
@@ -347,7 +348,7 @@ nnoremap <buffer><expr> S      unite#mappings#set_current_sorters(
       \ ['sorter_reverse'] : [])
 
 " Runs "split" action by <C-s>.
-"inoremap <silent><buffer><expr> <C-p>     unite#do_action('split') "c-s use by tmux "
+inoremap <silent><buffer><expr> <C-p>     unite#do_action('split') "c-s use by tmux "
 inoremap <silent><buffer><expr> <C-v>     unite#do_action('vsplit')
 endfunction"}}}
 
@@ -378,5 +379,35 @@ vmap <C-y> :YapfFormat<CR>
 
 "go plugin
 "vim-go
-au FileType go nmap <leader>gd <Plug>(go-doc)
-au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+
+augroup go
+  autocmd!
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <leader>gd <Plug>(go-doc)
+  autocmd FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+  "autocmd FileType go nmap <leader>d  <Plug>(go-def)
+    " :GoDef but opens in a vertical split
+  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  " :GoDef but opens in a horizontal split
+  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+augroup END
+
