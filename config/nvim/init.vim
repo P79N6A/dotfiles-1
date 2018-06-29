@@ -31,7 +31,10 @@ call dein#add('scrooloose/nerdcommenter')
 call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter') "show git diff
-call dein#add('Shougo/unite.vim')
+"call dein#add('Shougo/units.vim')
+"call dein#add('Shougo/denite.nvim')
+call dein#add('junegunn/fzf.vim')
+call dein#add('/usr/local/opt/fzf')
 call dein#add('editorconfig/editorconfig-vim')
 
 " neovim syntastic lint
@@ -42,8 +45,8 @@ call dein#add('w0rp/ale')
 "call dein#add('Shougo/neoyank.vim')
 
 " browse
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/unite-outline')
+call dein#add('Shougo/neomru.vim') " for unite
+"call dein#add('Shougo/unite-outline') " for unite
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('rizzatti/dash.vim')
 
@@ -63,9 +66,8 @@ call dein#add('zchee/deoplete-jedi')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('hynek/vim-python-pep8-indent')
 call dein#add('pignacio/vim-yapf-format')
+"call dein#add('Chiel92/vim-autoformat')
 call dein#add('heavenshell/vim-pydocstring')
-"call dein#add('chase/vim-ansible-yaml')
-"call dein#add('drinksober/nvim-yapf-formater')
 
 " go
 call dein#add('fatih/vim-go')
@@ -80,12 +82,13 @@ call dein#add('modille/groovy.vim')
 " doc
 "call dein#add('vimcn/vimcdoc')
 "call dein#add('vimcn/NERD_tree.vim.cnx')
-call dein#add('vimcn/NERD_commenter.cnx')
+"call dein#add('vimcn/NERD_commenter.cnx')
 "call dein#add('vimcn/tagbar.cnx')
 
 "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 call dein#add('Shougo/vimshell.vim')
 
+"other
 call dein#add('nathangrigg/vim-beancount')
 
 call dein#end()
@@ -101,7 +104,6 @@ endif
 
 " nvim Config
 if has("mac")
-    "let g:python_host_prog = '/usr/local/bin/python2'
     let g:python_host_prog = '/usr/local/opt/python@2/bin/python2'
     let g:python2_host_prog = '/usr/local/opt/python@2/bin/python2'
     let g:python3_host_prog = '/usr/local/bin/python3'
@@ -143,7 +145,7 @@ set expandtab
 "set mouse=a
 
 autocmd FileType c,cpp,python set cc=121|hi colorcolumn guibg=black
-"autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "autocmd FileType beancount setlocal ts=2 sts=2 sw=2 expandtab
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif"'")"'")"'")
 let g:bracketed_paste_mode = 0
@@ -152,7 +154,7 @@ let g:bracketed_paste_mode = 0
 let mapleader = ","
 nmap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
-" quick cout search
+" quick cut search
 map ,* *<C-O>:%s///gn<CR>``
 "nmap Y y$
 map <C-n> :cnext<CR>
@@ -169,8 +171,6 @@ cabbrev h vert h
 map <F5> :w<CR>:!ipython "%"<CR>
 "autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
 "autocmd CompleteDone * pclose " To close preview window of deoplete automagically
-
-" scheme lisp
 
 " programing end }}}
 
@@ -240,7 +240,7 @@ let g:tagbar_sort = 0
 " rainbow
 "let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-"ale
+" ale
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \   'python': ['flake8'],
@@ -248,110 +248,38 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'python': ['yapf', 'isort', 'trim_whitespace'],
 \}
-"let g:ale_python_flake8_options = '--max-line-length=120 --max-complexity=12 --ignore=H301,H306,H404'
+
+let g:ale_fixers = {
+\ 'python': ['add_blank_lines_for_python_control_statements','autopep8','isort','yapf','remove_trailing_lines','trim_whitespace'],
+\}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+
 " airline
 let g:airline_powerline_fonts = 1
-"if !exists('g:airline_powerline_fonts')
-	" Use the default set of separators with a few customizations
-	"let g:airline_left_sep='›'  " Slightly fancier than '>'
-	"let g:airline_right_sep='‹' " Slightly fancier than '<'
-"endif
 
+" fzf
+" TODO: need use fzf in all pattern
+let g:fzf_buffers_jump = 1
+" map
+nnoremap <silent><Leader>b :Buffers<CR>
+nnoremap <silent><Leader>fg :Ag<CR>
+nnoremap <silent><Leader>h :HelpTags<CR>
 
-"unite
-nnoremap <silent><Leader>b :Unite -silent buffer<CR>
-" The prefix key.
-nnoremap    [unite]   <Nop>
-nmap    <leader>f [unite]
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 
-nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
-    \ -buffer-name=files buffer bookmark file<CR>
-nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
-    \ -buffer-name=files buffer bookmark file<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite
-    \ -buffer-name=register register<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]g  :<C-u>Unite grep:.<CR>
-"nnoremap <silent> [unite]f
-    "\ :<C-u>Unite -buffer-name=resume resume<CR>
-nnoremap <silent> [unite]ma
-    \ :<C-u>Unite mapping<CR>
-nnoremap <silent> [unite]me
-    \ :<C-u>Unite output:message<CR>
-nnoremap  [unite]f  :<C-u>Unite source<CR>
-nnoremap <silent> [unite]s
-    \ :<C-u>Unite -buffer-name=files -no-split
-    \ jump_point file_point buffer_tab
-    \ file_rec:! file file/new<CR>
-nnoremap <silent> [unite]d
-        \ :<C-u>Unite -buffer-name=files -default-action=lcd neomru/directory<CR>
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-i --vimgrep --hidden --ignore ' .
-  \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-endif
-
-" neoyank
-"let g:unite_source_history_yank_enable = 1
-"nnoremap <space>y :Unite history/yank<cr>
-
-" Start insert.
-"call unite#custom#profile('default', 'context', {
-"\   'start_insert': 1
-"\ })
-
-" Like ctrlp.vim settings.
-"call unite#custom#profile('default', 'context', {
-"\   'start_insert': 1,
-"\   'winheight': 10,
-"\   'direction': 'botright',
-"\ })
-
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-" Overwrite settings.
-
-imap <buffer> jj      <Plug>(unite_insert_leave)
-"imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-
-imap <buffer><expr> j unite#smart_map('j', '')
-imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-imap <buffer> '     <Plug>(unite_quick_match_default_action)
-nmap <buffer> '     <Plug>(unite_quick_match_default_action)
-imap <buffer><expr> x
-      \ unite#smart_map('x', "\<Plug>(unite_quick_match_jump)")
-nmap <buffer> x     <Plug>(unite_quick_match_jump)
-nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
-nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-nnoremap <silent><buffer><expr> l
-      \ unite#smart_map('l', unite#do_action('default'))
-
-let unite = unite#get_current_unite()
-if unite.profile_name ==# 'search'
-nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-else
-nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-endif
-
-nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-nnoremap <buffer><expr> S      unite#mappings#set_current_sorters(
-      \ empty(unite#mappings#get_current_sorters()) ?
-      \ ['sorter_reverse'] : [])
-
-" Runs "split" action by <C-s>.
-inoremap <silent><buffer><expr> <C-p>     unite#do_action('split') "c-s use by tmux "
-inoremap <silent><buffer><expr> <C-v>     unite#do_action('vsplit')
-endfunction"}}}
-
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 "gitgutter
 let g:gitgutter_enabled=1                    " enable at start

@@ -17,3 +17,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # thefuck
 eval $(thefuck --alias)
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
