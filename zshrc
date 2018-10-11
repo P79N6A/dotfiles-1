@@ -16,7 +16,7 @@ PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; pr
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # thefuck
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
