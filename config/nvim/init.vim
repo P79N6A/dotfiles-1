@@ -3,7 +3,9 @@
 if &compatible
   set nocompatible               " Be iMproved
 endif
-set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+" set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
 call dein#begin(expand('~/.config/nvim/dein'))
 call dein#add('Shougo/dein.vim')
 
