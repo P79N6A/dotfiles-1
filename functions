@@ -8,6 +8,18 @@ function unsetproxy() {
     unset ALL_PROXY
 }
 
+function settx() {
+    export http_proxy="http://web-proxy.tencent.com:8080";
+    export https_proxy="http://web-proxy.tencent.com:8080";
+    export no_proxy="git.code.oa.com,r.tnpm.oa.com,*.mnet2.com";
+}
+
+function unsettx() {
+    unset http_proxy;
+    unset https_proxy;
+    unset no_proxy;
+}
+
 
 # Syntax-highlight JSON strings or files,similar to json format
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
