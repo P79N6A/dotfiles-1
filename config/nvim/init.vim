@@ -54,6 +54,10 @@ call dein#add('rizzatti/dash.vim')
 
 " complete
 call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
 call dein#add('Raimondi/delimitMate')
 
 " snippet
