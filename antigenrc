@@ -17,5 +17,6 @@ antigen bundle common-aliases
 antigen bundle go
 antigen bundle docker
 antigen bundle history-substring-search
+antigen bundle fzf
 
 antigen apply
